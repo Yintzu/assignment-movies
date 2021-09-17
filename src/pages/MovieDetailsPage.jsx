@@ -11,22 +11,24 @@ import Card from 'react-bootstrap/esm/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import MovieCard from '../components/MovieCard'
 import { useStore } from '../contexts/StoreContextProvider'
+import Alert from 'react-bootstrap/esm/Alert'
 
 const MovieDetailsPage = () => {
     const { id } = useParams()
-    const { data } = useQuery(['movie', id], () => getMovie(id))
+    const { addToHistory } = useStore()
+
+    const { data, isError, error, isLoading } = useQuery(['movie', id], () => getMovie(id))
     const { data: castData } = useQuery(['cast', id], () => getCast(id))
     const { data: similarData } = useQuery(['similar', id], () => getSimilarMovies(id))
 
-    const { addToHistory } = useStore()
-
+    //Adds movie ID and poster path to history (and then local storage) that's all we need really.
     useEffect(() => {
-        if (data) addToHistory(data.data)
+        if (data) addToHistory({id: data.data.id, poster_path: data.data.poster_path})
     }, [data])
 
     const renderCast = ({ data }) => {
-        return data.cast.slice(0, 10).map((person, i) => (
-            <Col xs={6} sm={3} md={3} lg={2} key={i} className="mb-4">
+        return data.cast.slice(0, 12).map((person, i) => (
+            <Col xs={6} sm={4} md={3} lg={2} key={i} className="mb-4">
                 <Link to={`/person/${person.id}`} style={{ textDecoration: 'none' }}>
                     <Card>
                         <Card.Img variant="top" src={image500(person.profile_path)} />
@@ -41,6 +43,12 @@ const MovieDetailsPage = () => {
 
     return (
         <>
+            {isLoading &&
+                <h1 className="text-center">Loading...</h1>
+            }
+            {isError &&
+                <Alert variant="danger" className="text-center"><strong>Error:</strong> {error.message}</Alert>
+            }
             {data &&
                 <>
                     <Row>

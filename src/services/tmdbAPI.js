@@ -30,7 +30,7 @@ export const getMoviesWithGenres = (genres, page) => {
     return axios.get(`/discover/movie?with_genres=${genres}&page=${page}&${apiKey}`)
 }
 
-export const getSimilarMovies = (id) => {
+export const getSimilarMovies = id => {
     return axios.get(`/movie/${id}/similar?${apiKey}`)
 }
 
@@ -51,6 +51,6 @@ export const getPerson = id => {
     return axios.get(`/person/${id}?${apiKey}`)
 }
 
-export const getKnownFor = (id) => {
+export const getKnownFor = id => {
     return axios.get(`/discover/movie?with_cast=${id}&${apiKey}`)
 }

@@ -10,7 +10,7 @@ const Pagination = ({ page, setPage, isPreviousData, hasMore }) => {
     return (
         <div className="d-flex justify-content-between">
             <Button
-                onClick={() => setPage(currentPage => Math.max(currentPage - 1, 1))}
+                onClick={() => setPage({page: Math.max(page - 1, 1)})}
                 disabled={page === 1}
                 style={width}>
                 Previous
@@ -19,7 +19,7 @@ const Pagination = ({ page, setPage, isPreviousData, hasMore }) => {
             <span>Page: {page}</span>
 
             <Button
-                onClick={() => { if (!isPreviousData && hasMore) setPage(currentPage => currentPage + 1) }}
+                onClick={() => { if (!isPreviousData && hasMore) setPage({page: page + 1 })}}
                 disabled={isPreviousData || !hasMore}
                 style={width}>
                 Next

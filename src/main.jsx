@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryParamProvider } from 'use-query-params'
 import StoreContextProvider from './contexts/StoreContextProvider'
 
 // import { ReactQueryDevtools } from 'react-query/devtools'
@@ -21,10 +22,10 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <StoreContextProvider>
         <BrowserRouter>
-          <App />
-
+          <QueryParamProvider ReactRouterRoute={Route}>
+            <App />
           {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-
+          </QueryParamProvider>
         </BrowserRouter>
       </StoreContextProvider>
     </QueryClientProvider>

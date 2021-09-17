@@ -7,13 +7,20 @@ import Col from 'react-bootstrap/esm/Col'
 import Image from 'react-bootstrap/esm/Image'
 import { imageFull } from '../utilities/HelperFunctions'
 import KnownFor from '../components/KnownFor'
+import Alert from 'react-bootstrap/esm/Alert'
 
 const PersonDetailsPage = () => {
     const { id } = useParams()
-    const { data } = useQuery(['person', id], () => getPerson(id))
-
+    const { data, isError, error, isLoading } = useQuery(['person', id], () => getPerson(id))
+    
     return (
         <>
+            {isLoading &&
+                <h1 className="text-center">Loading...</h1>
+            }
+            {isError &&
+                <Alert variant="danger" className="text-center"><strong>Error:</strong> {error.message}</Alert>
+            }
             {data &&
                 <>
                     <Row>

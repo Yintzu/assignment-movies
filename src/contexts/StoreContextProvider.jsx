@@ -10,6 +10,7 @@ export const useStore = () => {
 
 
 const StoreContextProvider = (props) => {
+    //Custom hook to manage local storage, find code in '/utilities'.
     const [localStorageData, setLocalStorageData] = useLocalStorage('movieHistory', [])
     const [movieHistory, setMovieHistory] = useState(localStorageData)
 

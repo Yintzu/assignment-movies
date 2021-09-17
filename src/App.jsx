@@ -14,7 +14,7 @@ import './App.scss'
 function App() {
 
   return (
-    <div className="App" style={{background: 'var(--bs-light)'}}>
+    <div className="App" style={{background: 'var(--bs-light)', minHeight: '100vh'}}>
       <Navigation />
       <Container className="py-4">
         <Switch>
