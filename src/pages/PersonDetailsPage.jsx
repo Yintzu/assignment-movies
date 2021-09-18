@@ -25,7 +25,7 @@ const PersonDetailsPage = () => {
                 <>
                     <Row>
                         <Col xs={12} md={6} lg={4} className="mb-4">
-                            <Image src={imageFull(data.data.profile_path)} alt="" fluid />
+                            <Image src={imageFull(data.data.profile_path)} fluid />
                         </Col>
                         <Col xs={12} md={6} lg={8}>
                             <h1>{data.data.name}</h1>

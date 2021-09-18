@@ -6,8 +6,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { QueryParamProvider } from 'use-query-params'
 import StoreContextProvider from './contexts/StoreContextProvider'
 
-// import { ReactQueryDevtools } from 'react-query/devtools'
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -24,7 +22,6 @@ ReactDOM.render(
         <BrowserRouter>
           <QueryParamProvider ReactRouterRoute={Route}>
             <App />
-          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
           </QueryParamProvider>
         </BrowserRouter>
       </StoreContextProvider>

@@ -9,6 +9,7 @@ import MovieCard from '../components/MovieCard'
 import Pagination from '../components/Pagination'
 import { useQueryParams, withDefault, ArrayParam, NumberParam } from 'use-query-params'
 
+//Shows all genres if no boxes are ticked, otherwise shows only the genres that are selected.
 const GenresPage = () => {
     const boxParentRef = useRef()
 

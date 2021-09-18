@@ -28,7 +28,7 @@ const HomePageList = ({ timeWindowButton, title, getFunction }) => {
             </div>
             <Row>
                 {data && data.data.results.map((result, i) => (
-                    <Col xs={6} sm={4} md={2} key={i} className="mb-4">
+                    <Col xs={6} sm={4} md={3} lg={2} key={i} className="mb-4">
                         <Link to={`/movies/${result.id}`} >
                             <Card>
                                 <Card.Img src={image500(result.poster_path)} />

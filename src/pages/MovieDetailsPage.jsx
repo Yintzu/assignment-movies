@@ -53,7 +53,7 @@ const MovieDetailsPage = () => {
                 <>
                     <Row>
                         <Col xs={12} md={6} className="mb-4">
-                            <Image src={imageFull(data.data.poster_path)} alt="" fluid />
+                            <Image src={imageFull(data.data.poster_path)} fluid />
                         </Col>
                         <Col xs={12} md={6}>
                             <h1>{data.data.title}</h1>
